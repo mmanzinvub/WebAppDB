@@ -59,25 +59,100 @@ INSERT INTO table_films (IMAGE_URL, CATEGORY, NAME, PRICE, STOCK)
 VALUES ('img/polaroid-color600.png', 'Instant Film', 'Polaroid Color 600', 30.00, 0);
 
 -- UPDATE
+-- cameras
+UPDATE table_cameras
+SET STOCK = 25
+WHERE CATEGORY = 'SLR';
 
-UPDATE table_cameras SET STOCK = 25 WHERE CATEGORY = 'SLR';
-UPDATE table_cameras SET STOCK = 3 WHERE CATEGORY = 'Rangefinder';
-UPDATE table_cameras SET STOCK = 6 WHERE CATEGORY = 'Point & Shoot';
-UPDATE table_cameras SET STOCK = 2 WHERE CATEGORY = 'Medium Format';
-UPDATE table_cameras SET STOCK = 3 WHERE CATEGORY = 'Instant Camera';
-UPDATE table_cameras SET STOCK = 6 WHERE CATEGORY = 'Digital Camera';
-UPDATE table_cameras SET STOCK = 1 WHERE CATEGORY = 'Medium Format';
+UPDATE table_cameras
+SET STOCK = 3
+WHERE CATEGORY = 'Rangefinder';
 
-UPDATE table_lenses SET PRICE = 112.00 AND STOCK = 12 WHERE NAME = 'Minolta MD Rokkor' AND APERTURE = '28 mm f2.8';
-UPDATE table_lenses SET PRICE = 135.00 AND STOCK = 20 WHERE NAME = 'Minolta MD Rokkor' AND CATEGORY = 'Standard';
-UPDATE table_lenses SET PRICE = 155.00 AND STOCK = 8 WHERE NAME = 'Canon EF Ultrasonic';
-UPDATE table_lenses SET PRICE = 145.00 AND STOCK = 10 WHERE NAME = 'Canon EF' AND CATEGORY = 'Standard';
-UPDATE table_lenses SET PRICE = 180.00 AND STOCK = 5 WHERE APERTURE = '43-86mm f3.5';
-UPDATE table_lenses SET PRICE = 170.00 AND STOCK = 10 WHERE CATEGORY = 'Telephoto';
+UPDATE table_cameras
+SET STOCK = 6
+WHERE CATEGORY = 'Point & Shoot';
 
-UPDATE table_equipment SET STOCK = 100;
+UPDATE table_cameras
+SET STOCK = 2
+WHERE CATEGORY = 'Medium Format';
 
-UPDATE table_films SET STOCK = 777;
+UPDATE table_cameras
+SET STOCK = 3
+WHERE CATEGORY = 'Instant Camera';
+
+UPDATE table_cameras
+SET STOCK = 6
+WHERE CATEGORY = 'Digital Camera';
+
+UPDATE table_cameras
+SET STOCK = 1
+WHERE CATEGORY = 'Medium Format';
+
+-- lenses
+UPDATE table_lenses
+SET PRICE = 112.00, STOCK = 12
+WHERE NAME = 'Minolta MD Rokkor' AND APERTURE = '28mm f2.8';
+
+UPDATE table_lenses
+SET PRICE = 135.00, STOCK = 20
+WHERE NAME = 'Minolta MD Rokkor' AND CATEGORY = 'Standard';
+
+UPDATE table_lenses
+SET PRICE = 155.00, STOCK = 8
+WHERE NAME = 'Canon EF Ultrasonic';
+
+UPDATE table_lenses
+SET PRICE = 145.00, STOCK = 10
+WHERE NAME = 'Canon EF' AND CATEGORY = 'Standard';
+
+UPDATE table_lenses
+SET PRICE = 180.00, STOCK = 5
+WHERE APERTURE = '43-86mm f3.5';
+
+UPDATE table_lenses
+SET PRICE = 170.00, STOCK = 10
+WHERE CATEGORY = 'Telephoto';
+
+-- equipment
+UPDATE TABLE_EQUIPMENT
+SET STOCK = 20
+WHERE CATEGORY = 'Bjeskalica';
+
+UPDATE TABLE_EQUIPMENT
+SET STOCK = 10
+WHERE NAME = 'Cullmann Alpha 1800';
+
+UPDATE TABLE_EQUIPMENT
+SET STOCK = 35, PRICE = 65.00
+WHERE PRICE = 40.00;
+
+UPDATE TABLE_EQUIPMENT
+SET STOCK = 150, PRICE = 15.00
+WHERE CATEGORY = 'Okidac';
+
+-- films
+UPDATE TABLE_FILMS
+SET STOCK = 777
+WHERE CATEGORY = '35mm';
+
+UPDATE TABLE_FILMS
+SET STOCK = 27
+WHERE CATEGORY = 'Instant Film';
+
+UPDATE TABLE_FILMS
+SET STOCK = 271
+WHERE STOCK = 777;
+
+UPDATE TABLE_FILMS
+SET STOCK = 77, PRICE = 18.00
+WHERE NAME LIKE '% APX 100';
+
+UPDATE TABLE_FILMS
+SET STOCK = 170
+WHERE NAME LIKE 'Candido%';
+
+UPDATE TABLE_FILMS
+SET STOCK = 120
+WHERE NAME = 'Wolfen NC 500' AND CATEGORY = '35mm';
 
 -- DELETE
-
