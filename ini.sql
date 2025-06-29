@@ -64,6 +64,7 @@ CREATE TABLE table_customers
     first_name  varchar2(50),
     last_name   varchar2(50),
     email       varchar2(100)                                  NOT NULL UNIQUE,
+    password    varchar2(100)                                  NOT NULL,
     address     varchar2(200),
     city        varchar2(50),
     zip         varchar2(10),
