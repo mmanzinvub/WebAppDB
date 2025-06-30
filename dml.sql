@@ -25,7 +25,7 @@ CREATE OR REPLACE PACKAGE BODY DOHVAT AS
             l_out.append(json_object_t(JSON_OBJECT(
                 'customer_id' VALUE x.CUSTOMER_ID,
                 'first_name' VALUE x.FIRST_NAME,
-                'last_name' VALUE x.LAST_NAME
+                'last_name' VALUE x.LAST_NAME,
                 'city' VALUE x.CITY
             )));
         END LOOP;
@@ -121,14 +121,14 @@ END PODACI;
 CREATE OR REPLACE PACKAGE BODY PODACI AS
     -- insert_customer
     PROCEDURE insert_customer(l_obj IN OUT JSON_OBJECT_T) AS
-    l_string    VARCHAR2(4000);
-    l_first     VARCHAR2(50);
-    l_last      VARCHAR2(50);
-    l_email     VARCHAR2(100);
-    l_password  VARCHAR2(100);
-    l_address   VARCHAR2(200);
-    l_city      VARCHAR2(50);
-    l_zip       VARCHAR2(10);
+        l_string    VARCHAR2(4000);
+        l_first     VARCHAR2(50);
+        l_last      VARCHAR2(50);
+        l_email     VARCHAR2(100);
+        l_password  VARCHAR2(100);
+        l_address   VARCHAR2(200);
+        l_city      VARCHAR2(50);
+        l_zip       VARCHAR2(10);
     BEGIN
         l_string := l_obj.TO_STRING;
         l_first := JSON_VALUE(l_string, '$.first_name' RETURNING VARCHAR2);
