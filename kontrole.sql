@@ -86,9 +86,9 @@ CREATE OR REPLACE PACKAGE BODY DOHVATI AS
     -- p_login
     PROCEDURE p_login(l_obj IN OUT JSON_OBJECT_T) AS
         l_string   VARCHAR2(4000);
-        l_username table_customers.EMAIL%type;
-        l_password table_customers.PASSWORD%type;
-        l_id       table_customers.CUSTOMER_ID%type;
+        l_username common.korisnici.email%type;
+        l_password common.korisnici.password%type;
+        l_id       common.korisnici.id%type;
         l_record   VARCHAR2(4000);
         l_out      json_array_t := json_array_t('[]');
     BEGIN
@@ -102,8 +102,8 @@ CREATE OR REPLACE PACKAGE BODY DOHVATI AS
             RAISE e_iznimka;
         ELSE
             SELECT COUNT(1) INTO l_id
-            FROM table_customers
-            WHERE EMAIL = l_username AND PASSWORD = l_password;
+            FROM common.korisnici
+            WHERE email = l_username AND password = l_password;
 
             IF l_id = 0 THEN
                 l_obj.put('h_message', 'Nepoznato korisničko ime ili zaporka');
@@ -118,16 +118,16 @@ CREATE OR REPLACE PACKAGE BODY DOHVATI AS
             END IF;
 
             SELECT JSON_OBJECT(
-                'customer_id' VALUE cus.CUSTOMER_ID,
-                'first_name'  VALUE cus.FIRST_NAME,
-                'last_name'   VALUE cus.LAST_NAME,
-                'email'       VALUE cus.EMAIL,
-                'city'        VALUE cus.CITY,
-                'address'     VALUE cus.ADDRESS,
-                'zip'         VALUE cus.ZIP
+                'ID' VALUE kor.id,
+                'ime' VALUE kor.ime,
+                'prezime' VALUE kor.prezime,
+                'OIB' VALUE kor.oib,
+                'email' VALUE kor.email,
+                'spol' VALUE kor.spol,
+                'ovlasti' VALUE kor.ovlasti
             ) INTO l_record
-            FROM table_customers cus
-            WHERE EMAIL = l_username AND PASSWORD = l_password;
+            FROM common.korisnici kor
+            WHERE email = l_username AND password = l_password;
 
             l_out.append(json_object_t(l_record));
             l_obj.put('data', l_out);
@@ -141,6 +141,7 @@ CREATE OR REPLACE PACKAGE BODY DOHVATI AS
             l_obj.put('h_errcod', 91);
             RAISE;
     END p_login;
+
 
     -- p_zupanije
     PROCEDURE p_zupanije(l_obj IN OUT JSON_OBJECT_T) AS
